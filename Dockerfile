@@ -10,5 +10,5 @@ WORKDIR /mtech-test-frontend
 RUN pnpm install --frozen-lockfile
 
 EXPOSE 5173
-CMD ["pnpm", "dev"]
+CMD ["pnpm", "host"]
 

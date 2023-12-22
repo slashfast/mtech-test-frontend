@@ -3,7 +3,7 @@ import { ref, onBeforeMount } from 'vue'
 import UniversalForm from './UniversalForm.vue'
 import type { Field } from './UniversalForm.vue'
 import type Employee from './NewEmployeeForm.vue'
-import { get } from '../api'
+import { get, post } from '../api'
 
 const rules = {
   required: (value: number | string) => !!value || 'Необходимое поле'
@@ -38,13 +38,6 @@ onBeforeMount(async () => {
       attrs: { label: 'Название продукта', rules: [rules.required] }
     },
     {
-      is: 'v-divider',
-      id: 'divider1',
-      attrs: {
-        class: 'mb-4'
-      }
-    },
-    {
       is: 'v-text-field',
       id: 'name',
       modelValue: jiraLink,
@@ -71,12 +64,12 @@ onBeforeMount(async () => {
 })
 
 const onSubmit = function () {
-  console.log(
-    selectedManager.value,
-    product.value,
-    jiraLink.value,
-    selectedDomain.value
-  )
+  post('/new_product', {
+    manager_uuid: selectedManager.value?.value,
+    name: product.value,
+    jira_link: jiraLink.value,
+    domain: selectedDomain.value
+  })
 }
 </script>
 

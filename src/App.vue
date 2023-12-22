@@ -9,7 +9,7 @@ const tab = ref(null)
 <template>
   <v-app>
     <v-container>
-      <v-sheet width="500" class="mx-auto">
+      <v-sheet width="1000" class="mx-auto">
         <v-card>
           <v-tabs v-model="tab">
             <v-tab value="one">Проект</v-tab>

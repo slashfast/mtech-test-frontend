@@ -2,7 +2,7 @@
 import { ref, onBeforeMount } from 'vue'
 import UniversalForm from './UniversalForm.vue'
 import type { Field } from './UniversalForm.vue'
-import { get } from '../api'
+import { get, post } from '../api'
 
 export interface Employee {
   value: string
@@ -99,17 +99,21 @@ onBeforeMount(async () => {
 })
 
 const onSubmit = function () {
-  console.log(
-    selectedEmployee.value?.value,
-    selectedLead.value?.value,
-    bid.value,
-    businessUnit.value,
-    captialization.value,
-    role.value
-  )
+  post('/new_employee', {
+    uuid: selectedEmployee.value?.value,
+    lead_uuid: selectedLead.value?.value,
+    bid: bid.value,
+    business_unit: businessUnit.value,
+    capitalization: captialization.value,
+    role: role.value
+  })
 }
 </script>
 
 <template>
-  <UniversalForm :fields="fields" :onSubmit="onSubmit"></UniversalForm>
+  <UniversalForm
+    :fields="fields"
+    :onSubmit="onSubmit"
+    :columned="true"
+  ></UniversalForm>
 </template>

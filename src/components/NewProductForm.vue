@@ -70,6 +70,7 @@ const onSubmit = function () {
     jira_link: jiraLink.value,
     domain: selectedDomain.value
   })
+  console.log('DD')
 }
 </script>
 

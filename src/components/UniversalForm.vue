@@ -26,6 +26,11 @@ const oddFields = computed(() => {
 const evenFields = computed(() => {
   return props.fields.filter((_, i) => i % 2 === 0)
 })
+
+const submit = function () {
+  props.onSubmit?.()
+  snackBar.value = true
+}
 </script>
 
 <template>
@@ -81,7 +86,7 @@ const evenFields = computed(() => {
         <v-btn
           v-if="props.onSubmit"
           :disabled="!isValid"
-          @click="props.onSubmit, (snackBar = true)"
+          @click="submit"
           class="ml-2"
           type="submit"
           >Создать</v-btn

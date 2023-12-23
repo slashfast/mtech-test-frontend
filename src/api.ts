@@ -24,7 +24,9 @@ export async function post(
   config?: any
 ) {
   try {
-    return await instance.post(endpoint, payload, config)
+    return await instance.post(endpoint, payload, config).then((response) => {
+      console.log(response)
+    })
   } catch (error) {
     console.error(error)
   }

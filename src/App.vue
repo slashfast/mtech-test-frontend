@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import NewProjectForm from './components/NewProjectForm.vue'
+import NewProjectForm from './components/NewProductForm.vue'
 import NewEmployeeForm from './components/NewEmployeeForm.vue'
 
 const tab = ref(null)
